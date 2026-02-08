@@ -5,7 +5,9 @@ import {
   Twitter, 
   ExternalLink, 
   Layers, 
-  Code2 
+  Code2,
+  Globe,
+  Settings 
 } from "lucide-react";
 import fotoPerfil from './assets/img_perfil.png'; 
 
@@ -186,7 +188,40 @@ const projects = [
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80"
   }
 ];
+const SkillBadge = ({ name, icon: Icon, color }) => (
+  <div className="flex flex-col items-center p-4 bg-[#111] rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all group">
+    <div className={`p-3 rounded-xl bg-opacity-10 mb-3 group-hover:scale-110 transition-transform ${color}`}>
+      <Icon size={32} />
+    </div>
+    <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{name}</span>
+  </div>
+);
 
+const Habilidades = () => {
+  const skills = [
+    { name: "React", icon: Code2, color: "text-blue-400 bg-blue-400" },
+    { name: "SQL Server", icon: Layers, color: "text-red-400 bg-red-400" },
+    { name: "Redes / IT", icon: Globe, color: "text-green-400 bg-green-400" },
+    { name: "Soporte Técnico", icon: Settings, color: "text-orange-400 bg-orange-400" },
+    { name: "JavaScript", icon: Code2, color: "text-yellow-400 bg-yellow-400" },
+    { name: "Tailwind CSS", icon: Layers, color: "text-cyan-400 bg-cyan-400" },
+  ];
+
+  return (
+    <section className="py-20">
+      <div className="mb-10 text-center md:text-left">
+        <h2 className="text-3xl font-black text-white">Habilidades Técnicas</h2>
+        <p className="text-gray-500 mt-1">Tecnologías y herramientas que domino profesionalmente.</p>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {skills.map((skill, index) => (
+          <SkillBadge key={index} {...skill} />
+        ))}
+      </div>
+    </section>
+  );
+};
 // --- APP PRINCIPAL ---
 export default function App() {
   return (
@@ -233,7 +268,7 @@ export default function App() {
             <LinkCard title="Mi Curso de React" description="Aprende desde las bases hasta nivel experto." url="#" icon={Code2} />
             <LinkCard title="Setup de Desarrollo" description="Las herramientas que uso en mi día a día." url="#" icon={Layers} />
           </section>
-
+<Habilidades />
           <div className="h-px bg-white/5 w-full mb-20"></div>
 
           <section className="mb-20">
