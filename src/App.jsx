@@ -8,7 +8,9 @@ import {
   Code2,
   Globe,
   Settings,
-  GraduationCap 
+  GraduationCap,
+  Palette,
+  LayoutTemplate 
 } from "lucide-react";
 import fotoPerfil from './assets/img_perfil.png'; 
 
@@ -196,12 +198,16 @@ const SkillBadge = ({ name, icon: Icon, colorClass }) => (
 const Habilidades = () => {
   const skills = [
     { name: "HTML", icon: Code2, colorClass: "text-blue-400" },
+    { name: "CSS", icon: Layers, colorClass: "text-cyan-400" },
+    { name: "PHP", icon: Code2, colorClass: "text-yellow-400" },
     { name: "MySQL", icon: Layers, colorClass: "text-red-400" },
+    { name: "JavaScript", icon: Code2, colorClass: "text-yellow-400" },
     { name: "Moodle / LMS", icon: GraduationCap, colorClass: "text-orange-500" },
     { name: "Redes / CCTV", icon: Globe, colorClass: "text-green-400" },
     { name: "Soporte IT", icon: Settings, colorClass: "text-orange-400" },
-    { name: "PHP", icon: Code2, colorClass: "text-yellow-400" },
-    { name: "CSS", icon: Layers, colorClass: "text-cyan-400" },
+    { name: "Diseño Gráfico", icon: PenTool, colorClass: "text-pink-400" },
+    { name: "Diseño UI/UX", icon: LayoutTemplate, colorClass: "text-pink-500" }
+    
   ];
 
   return (
