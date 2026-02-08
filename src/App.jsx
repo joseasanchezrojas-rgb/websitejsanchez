@@ -11,7 +11,8 @@ import {
   GraduationCap,
   PenTool,
   LayoutTemplate,
-  ArrowLeft
+  ArrowLeft,
+  ShieldAlert
 } from "lucide-react";
 import fotoPerfil from './assets/img_perfil.png'; 
 
@@ -224,7 +225,7 @@ const VistaProyectosWeb = ({ onVolver }) => {
             <h4 className="text-lg md:text-xl font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis">
               {p.title}
             </h4>
-            <p className="text-gray-400 text-sm mb-6 leading-relaxed flex-grow">{p.description}</p>
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed grow">{p.description}</p>
             <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-400 font-bold text-sm hover:underline mt-auto">
               Visitar Demo <ExternalLink size={14} className="ml-1" />
             </a>
@@ -301,7 +302,7 @@ export default function App() {
                 <h2 className="text-xs font-bold text-gray-600 uppercase tracking-[0.2em] mb-6 text-center">
                   Contenido y Comunidad
                 </h2>
-                <LinkCard title="Mi Curso de React" description="Aprende desde las bases hasta nivel experto." url="#" icon={Code2} />
+                <LinkCard title="Mi Taller de Ciberseguridad" description="Conoce los diferentes ataques Psicológicos de la Ingenieria Social." url="#" icon={ShieldAlert} />
                 <LinkCard title="Setup de Desarrollo" description="Las herramientas que uso en mi día a día." url="#" icon={Layers} />
               </section>
 
