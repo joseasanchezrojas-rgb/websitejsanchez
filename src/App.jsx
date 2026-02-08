@@ -10,25 +10,59 @@ import {
 import fotoPerfil from './assets/img_perfil.png'; 
 
 // --- COMPONENTES INTERNOS ---
-const BotonCV = () => (
-  <div className="flex justify-center gap-4 mt-8">
-    <a 
-      href="/CV_Jose_Sanchez_Ingeniero.pdf" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="inline-flex items-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
-    >
-      Ver Curriculum Vitae
-    </a>
-    <a 
-      href="/CV_Jose_Sanchez_Ingeniero.pdf" 
-      download
-      className="inline-flex items-center px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300"
-    >
-      Descargar PDF
-    </a>
-  </div>
-);
+const BotonCV = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    // Función para detectar si es móvil por el ancho de pantalla
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Ejecutar al cargar
+    checkMobile();
+    
+    // Escuchar cambios de tamaño de ventana
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const cvPath = "/CV_Jose_Sanchez_Ingeniero.pdf";
+
+  return (
+    <div className="flex flex-col md:flex-row justify-center gap-4 mt-8 px-6">
+      {isMobile ? (
+        // --- VISTA MÓVIL: Solo un botón de descarga ---
+        <a 
+          href={cvPath} 
+          download
+          className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-all"
+        >
+          Descargar Curriculum (PDF)
+        </a>
+      ) : (
+        // --- VISTA PC: Ambos botones ---
+        <>
+          <a 
+            href={cvPath} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
+          >
+            Ver Curriculum
+          </a>
+          <a 
+            href={cvPath} 
+            download
+            className="inline-flex items-center px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300"
+          >
+            Descargar PDF
+          </a>
+        </>
+      )}
+    </div>
+  );
+};
 const LinkCard = ({ title, description, url, icon: Icon }) => (
   <a 
     href={url} 
