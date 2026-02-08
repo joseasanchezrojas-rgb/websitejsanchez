@@ -10,7 +10,25 @@ import {
 import fotoPerfil from './assets/img_perfil.png'; 
 
 // --- COMPONENTES INTERNOS ---
-
+const BotonCV = () => (
+  <div className="flex justify-center gap-4 mt-8">
+    <a 
+      href="/CV_Jose_Sanchez_Ingeniero.pdf" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
+    >
+      Ver Curriculum Vitae
+    </a>
+    <a 
+      href="/CV_Jose_Sanchez_Ingeniero.pdf" 
+      download
+      className="inline-flex items-center px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300"
+    >
+      Descargar PDF
+    </a>
+  </div>
+);
 const LinkCard = ({ title, description, url, icon: Icon }) => (
   <a 
     href={url} 
@@ -170,6 +188,7 @@ export default function App() {
             <a href="#" className="hover:text-red-500 transition-colors"><Youtube size={24}/></a>
             <a href="#" className="hover:text-blue-400 transition-colors"><Twitter size={24}/></a>
           </div>
+          <BotonCV />
         </header>
 
         <main className="max-w-5xl mx-auto px-6 pb-24">
