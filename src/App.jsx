@@ -12,19 +12,15 @@ import {
 import fotoPerfil from './assets/img_perfil.png'; 
 
 // --- COMPONENTES INTERNOS ---
+
 const BotonCV = () => {
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
-    // Función para detectar si es móvil por el ancho de pantalla
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
-    // Ejecutar al cargar
     checkMobile();
-    
-    // Escuchar cambios de tamaño de ventana
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -34,16 +30,14 @@ const BotonCV = () => {
   return (
     <div className="flex flex-col md:flex-row justify-center gap-4 mt-8 px-6">
       {isMobile ? (
-        // --- VISTA MÓVIL: Solo un botón de descarga ---
         <a 
           href={cvPath} 
           download
-          className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-all"
+          className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-all animate-pulse"
         >
           Descargar Curriculum (PDF)
         </a>
       ) : (
-        // --- VISTA PC: Ambos botones ---
         <>
           <a 
             href={cvPath} 
@@ -65,6 +59,7 @@ const BotonCV = () => {
     </div>
   );
 };
+
 const LinkCard = ({ title, description, url, icon: Icon }) => (
   <a 
     href={url} 
@@ -141,7 +136,6 @@ const Contacto = () => {
     <section className="py-20 px-6">
       <div className="max-w-xl mx-auto bg-[#111] p-8 rounded-2xl border border-white/10 shadow-xl">
         <h2 className="text-3xl font-black text-white mb-6 text-center">Contacto</h2>
-        {/* RECUERDA: Crea tu cuenta en Formspree.io y pon tu ID aquí */}
         <form action="https://formspree.io/f/xaqdnyen" method="POST" className="space-y-4">
           <input 
             type="text" name="name" placeholder="Nombre" required 
@@ -155,7 +149,7 @@ const Contacto = () => {
             name="message" placeholder="¿En qué puedo ayudarte?" rows="4" required 
             className="w-full p-3 rounded-lg bg-black border border-white/10 focus:border-blue-500 outline-none text-white"
           ></textarea>
-          <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-all">
+          <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-all transform active:scale-95">
             Enviar Mensaje
           </button>
         </form>
@@ -188,9 +182,10 @@ const projects = [
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80"
   }
 ];
-const SkillBadge = ({ name, icon: Icon, color }) => (
-  <div className="flex flex-col items-center p-4 bg-[#111] rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all group">
-    <div className={`p-3 rounded-xl bg-opacity-10 mb-3 group-hover:scale-110 transition-transform ${color}`}>
+
+const SkillBadge = ({ name, icon: Icon, colorClass }) => (
+  <div className="flex flex-col items-center p-6 bg-[#111] rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all group animate-in fade-in zoom-in duration-500">
+    <div className={`p-4 rounded-xl bg-white/5 mb-3 group-hover:scale-110 transition-transform ${colorClass}`}>
       <Icon size={32} />
     </div>
     <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{name}</span>
@@ -199,22 +194,22 @@ const SkillBadge = ({ name, icon: Icon, color }) => (
 
 const Habilidades = () => {
   const skills = [
-    { name: "React", icon: Code2, color: "text-blue-400 bg-blue-400" },
-    { name: "SQL Server", icon: Layers, color: "text-red-400 bg-red-400" },
-    { name: "Redes / IT", icon: Globe, color: "text-green-400 bg-green-400" },
-    { name: "Soporte Técnico", icon: Settings, color: "text-orange-400 bg-orange-400" },
-    { name: "JavaScript", icon: Code2, color: "text-yellow-400 bg-yellow-400" },
-    { name: "Tailwind CSS", icon: Layers, color: "text-cyan-400 bg-cyan-400" },
+    { name: "React", icon: Code2, colorClass: "text-blue-400" },
+    { name: "SQL Server", icon: Layers, colorClass: "text-red-400" },
+    { name: "Redes / IT", icon: Globe, colorClass: "text-green-400" },
+    { name: "Soporte Técnico", icon: Settings, colorClass: "text-orange-400" },
+    { name: "JavaScript", icon: Code2, colorClass: "text-yellow-400" },
+    { name: "Tailwind CSS", icon: Layers, colorClass: "text-cyan-400" },
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-24">
       <div className="mb-10 text-center md:text-left">
         <h2 className="text-3xl font-black text-white">Habilidades Técnicas</h2>
-        <p className="text-gray-500 mt-1">Tecnologías y herramientas que domino profesionalmente.</p>
+        <p className="text-gray-500 mt-1 text-lg">Tecnologías y herramientas que domino profesionalmente.</p>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {skills.map((skill, index) => (
           <SkillBadge key={index} {...skill} />
         ))}
@@ -222,6 +217,7 @@ const Habilidades = () => {
     </section>
   );
 };
+
 // --- APP PRINCIPAL ---
 export default function App() {
   return (
@@ -253,7 +249,7 @@ export default function App() {
             Ingeniero de Sistemas enfocado en crear experiencias digitales modernas y eficientes.
           </p>
           <div className="flex justify-center gap-5 mt-6 text-gray-500">
-            <a href="https://github.com/joseasanchezrojas-rgb" className="hover:text-white transition-colors"><Github size={24}/></a>
+            <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Github size={24}/></a>
             <a href="#" className="hover:text-red-500 transition-colors"><Youtube size={24}/></a>
             <a href="#" className="hover:text-blue-400 transition-colors"><Twitter size={24}/></a>
           </div>
@@ -268,8 +264,12 @@ export default function App() {
             <LinkCard title="Mi Curso de React" description="Aprende desde las bases hasta nivel experto." url="#" icon={Code2} />
             <LinkCard title="Setup de Desarrollo" description="Las herramientas que uso en mi día a día." url="#" icon={Layers} />
           </section>
-<Habilidades />
-          <div className="h-px bg-white/5 w-full mb-20"></div>
+
+          <div className="h-px bg-white/5 w-full mb-10"></div>
+          
+          <Habilidades />
+
+          <div className="h-px bg-white/5 w-full my-20"></div>
 
           <section className="mb-20">
             <div className="mb-10 text-center md:text-left">
