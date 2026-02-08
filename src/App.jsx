@@ -105,11 +105,11 @@ const ProjectCard = ({ title, description, tags, link, image, onClick }) => (
       </p>
       <div className="mt-auto">
         <button 
-          onClick={onClick}
-          className="inline-flex items-center text-blue-400 font-bold text-sm hover:text-blue-300 transition-colors"
-        >
-          Ver Proyecto <ExternalLink size={14} className="ml-1" />
-        </button>
+  onClick={onClick}
+  className="inline-flex items-center text-blue-400 font-bold text-sm hover:text-blue-300 transition-colors cursor-pointer"
+>
+  Ver Proyecto <ExternalLink size={14} className="ml-1" />
+</button>
       </div>
     </div>
   </div>
