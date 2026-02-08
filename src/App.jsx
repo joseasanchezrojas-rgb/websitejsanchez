@@ -10,7 +10,8 @@ import {
   Settings,
   GraduationCap,
   PenTool,
-  LayoutTemplate 
+  LayoutTemplate,
+  ArrowLeft
 } from "lucide-react";
 import fotoPerfil from './assets/img_perfil.png'; 
 
@@ -81,8 +82,8 @@ const LinkCard = ({ title, description, url, icon: Icon }) => (
   </a>
 );
 
-const ProjectCard = ({ title, description, tags, link, image }) => (
-  <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-sm hover:shadow-xl hover:border-blue-500/30 hover:-translate-y-2 transition-all duration-300 flex flex-col">
+const ProjectCard = ({ title, description, tags, link, image, onClick }) => (
+  <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-sm hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 flex flex-col">
     <div className="h-48 bg-gray-800 overflow-hidden">
       <img 
         src={image} 
@@ -103,12 +104,12 @@ const ProjectCard = ({ title, description, tags, link, image }) => (
         {description}
       </p>
       <div className="mt-auto">
-        <a 
-          href={link} 
+        <button 
+          onClick={onClick}
           className="inline-flex items-center text-blue-400 font-bold text-sm hover:text-blue-300 transition-colors"
         >
           Ver Proyecto <ExternalLink size={14} className="ml-1" />
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -161,31 +162,6 @@ const Contacto = () => {
   );
 };
 
-// --- DATOS ---
-const projects = [
-  {
-    title: "Desarrollo Web",
-    description: "Creación de interfaces modernas y escalables con React.",
-    tags: ["React", "Tailwind"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80"
-  },
-  {
-    title: "Docencia",
-    description: "Compartiendo conocimientos técnicos con la comunidad.",
-    tags: ["Educación", "Mentoria"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
-  },
-  {
-    title: "Soporte Técnico",
-    description: "Soluciones de infraestructura y optimización de sistemas.",
-    tags: ["Soporte", "IT"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80"
-  }
-];
-
 const SkillBadge = ({ name, icon: Icon, colorClass }) => (
   <div className="flex flex-col items-center p-6 bg-[#111] rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all group animate-in fade-in zoom-in duration-500">
     <div className={`p-4 rounded-xl bg-white/5 mb-3 group-hover:scale-110 transition-transform ${colorClass}`}>
@@ -195,7 +171,76 @@ const SkillBadge = ({ name, icon: Icon, colorClass }) => (
   </div>
 );
 
-const Habilidades = () => {
+// --- COMPONENTE DE VISTA DETALLADA ---
+
+const VistaProyectosWeb = ({ onVolver }) => {
+  const proyectosReales = [
+    {
+      title: "Sistema de Gestión Médica",
+      description: "Plataforma integral para el control de citas, historias médicas y gestión de pacientes.",
+      tags: ["PHP", "MySQL", "JS"],
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500",
+      link: "#"
+    },
+    {
+      title: "Portafolio Profesional",
+      description: "Mi sitio personal actual, diseñado para destacar habilidades y proyectos con tecnología React.",
+      tags: ["React", "Tailwind"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500",
+      link: "https://jasanchezr.vercel.app"
+    },
+    {
+      title: "Plataforma E-learning Moodle",
+      description: "Implementación y personalización de entornos virtuales para formación académica online.",
+      tags: ["Moodle", "LMS", "PHP"],
+      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500",
+      link: "#"
+    }
+  ];
+
+  return (
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <button 
+        onClick={onVolver}
+        className="flex items-center text-blue-400 hover:text-white mb-8 transition-colors group"
+      >
+        <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
+        Volver al inicio
+      </button>
+      
+      <div className="mb-10 text-center md:text-left">
+        <h2 className="text-3xl font-black text-white">Proyectos: Desarrollo Web</h2>
+        <p className="text-gray-500 mt-1 text-lg">Detalle de mis trabajos principales en ingeniería de software.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {proyectosReales.map((p, i) => (
+          <div key={i} className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 p-4 hover:border-blue-500/30 transition-all">
+            <img src={p.image} className="rounded-xl mb-4 h-44 w-full object-cover opacity-90" alt={p.title} />
+            <div className="flex gap-2 mb-3">
+               {p.tags.map(tag => <span key={tag} className="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded font-bold uppercase">{tag}</span>)}
+            </div>
+            <h4 className="text-xl font-bold text-white mb-2">{p.title}</h4>
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed">{p.description}</p>
+            <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-400 font-bold text-sm hover:underline">
+              Visitar Demo <ExternalLink size={14} className="ml-1" />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// --- APP PRINCIPAL ---
+export default function App() {
+  const [vista, setVista] = React.useState('inicio');
+
+  // Asegura que al cambiar de vista, el scroll vuelva arriba
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [vista]);
+
   const skills = [
     { name: "HTML", icon: Code2, colorClass: "text-orange-400" },
     { name: "CSS", icon: Layers, colorClass: "text-cyan-400" },
@@ -210,87 +255,105 @@ const Habilidades = () => {
   ];
 
   return (
-    <section className="py-24">
-      <div className="mb-10 text-center md:text-left">
-        <h2 className="text-3xl font-black text-white">Habilidades Técnicas</h2>
-        <p className="text-gray-500 mt-1 text-lg">Tecnologías y herramientas que domino profesionalmente.</p>
-      </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {skills.map((skill, index) => (
-          <SkillBadge key={index} {...skill} />
-        ))}
-      </div>
-    </section>
-  );
-};
-
-// --- APP PRINCIPAL ---
-export default function App() {
-  return (
     <div className="min-h-screen bg-black bg-dots text-gray-100 font-sans selection:bg-blue-500/30">
       <WhatsAppButton />
       
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-sm md:text-base font-bold tracking-tight">
+          <button onClick={() => setVista('inicio')} className="text-sm md:text-base font-bold tracking-tight">
             <span className="text-blue-500">Ing.</span> José Sánchez
-          </span>
+          </button>
         </div>
       </nav>
 
       <div className="pt-16">
-        <header className="max-w-2xl mx-auto pt-16 pb-10 px-6 text-center">
-          <div className="relative inline-block">
-            <img 
-              src={fotoPerfil} 
-              alt="José Sánchez" 
-              className="w-32 h-32 rounded-full mx-auto border-4 border-[#111] shadow-2xl mb-6 object-cover object-center"
-            />
-            <div className="absolute bottom-8 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-black"></div>
-          </div>
-          <h1 className="text-4xl font-black text-white mb-2 tracking-tight">
-            <span className="text-blue-500">José</span> Sánchez
-          </h1>
-          <p className="text-gray-400 text-lg max-w-md mx-auto leading-relaxed">
-            Ingeniero de Sistemas enfocado en crear experiencias digitales modernas y eficientes.
-          </p>
-          <div className="flex justify-center gap-5 mt-6 text-gray-500">
-            <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Github size={24}/></a>
-            <a href="#" className="hover:text-red-500 transition-colors"><Youtube size={24}/></a>
-            <a href="#" className="hover:text-blue-400 transition-colors"><Twitter size={24}/></a>
-          </div>
-          <BotonCV />
-        </header>
-
         <main className="max-w-5xl mx-auto px-6 pb-24">
-          <section className="max-w-2xl mx-auto mb-20">
-            <h2 className="text-xs font-bold text-gray-600 uppercase tracking-[0.2em] mb-6 text-center">
-              Contenido y Comunidad
-            </h2>
-            <LinkCard title="Mi Curso de React" description="Aprende desde las bases hasta nivel experto." url="#" icon={Code2} />
-            <LinkCard title="Setup de Desarrollo" description="Las herramientas que uso en mi día a día." url="#" icon={Layers} />
-          </section>
-
-          <div className="h-px bg-white/5 w-full mb-10"></div>
           
-          <Habilidades />
+          {vista === 'inicio' ? (
+            <>
+              <header className="max-w-2xl mx-auto pt-16 pb-10 px-6 text-center">
+                <div className="relative inline-block">
+                  <img 
+                    src={fotoPerfil} 
+                    alt="José Sánchez" 
+                    className="w-32 h-32 rounded-full mx-auto border-4 border-[#111] shadow-2xl mb-6 object-cover object-center"
+                  />
+                  <div className="absolute bottom-8 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-black"></div>
+                </div>
+                <h1 className="text-4xl font-black text-white mb-2 tracking-tight">
+                  <span className="text-blue-500">José</span> Sánchez
+                </h1>
+                <p className="text-gray-400 text-lg max-w-md mx-auto leading-relaxed">
+                  Ingeniero de Sistemas enfocado en crear experiencias digitales modernas y eficientes.
+                </p>
+                <div className="flex justify-center gap-5 mt-6 text-gray-500">
+                  <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Github size={24}/></a>
+                  <a href="#" className="hover:text-red-500 transition-colors"><Youtube size={24}/></a>
+                  <a href="#" className="hover:text-blue-400 transition-colors"><Twitter size={24}/></a>
+                </div>
+                <BotonCV />
+              </header>
 
-          <div className="h-px bg-white/5 w-full my-20"></div>
+              <section className="max-w-2xl mx-auto mb-20">
+                <h2 className="text-xs font-bold text-gray-600 uppercase tracking-[0.2em] mb-6 text-center">
+                  Contenido y Comunidad
+                </h2>
+                <LinkCard title="Mi Curso de React" description="Aprende desde las bases hasta nivel experto." url="#" icon={Code2} />
+                <LinkCard title="Setup de Desarrollo" description="Las herramientas que uso en mi día a día." url="#" icon={Layers} />
+              </section>
 
-          <section className="mb-20">
-            <div className="mb-10 text-center md:text-left">
-              <h2 className="text-3xl font-black text-white">Servicios y Proyectos</h2>
-              <p className="text-gray-500 mt-1">Lo que puedo hacer por tu próximo proyecto.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
-              ))}
-            </div>
-          </section>
+              <div className="h-px bg-white/5 w-full mb-10"></div>
+              
+              <section className="py-24">
+                <div className="mb-10 text-center md:text-left">
+                  <h2 className="text-3xl font-black text-white">Habilidades Técnicas</h2>
+                  <p className="text-gray-500 mt-1 text-lg">Tecnologías y herramientas que domino profesionalmente.</p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                  {skills.map((skill, index) => (
+                    <SkillBadge key={index} {...skill} />
+                  ))}
+                </div>
+              </section>
 
-          <Contacto />
+              <div className="h-px bg-white/5 w-full my-20"></div>
+
+              <section className="mb-20">
+                <div className="mb-10 text-center md:text-left">
+                  <h2 className="text-3xl font-black text-white">Servicios y Proyectos</h2>
+                  <p className="text-gray-500 mt-1">Lo que puedo hacer por tu próximo proyecto.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <ProjectCard 
+                    title="Desarrollo Web" 
+                    description="Creación de interfaces modernas y escalables con React." 
+                    tags={["React", "Tailwind"]} 
+                    image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500"
+                    onClick={() => setVista('desarrollo-web')}
+                  />
+                  <ProjectCard 
+                    title="Docencia" 
+                    description="Compartiendo conocimientos técnicos con la comunidad." 
+                    tags={["Educación", "Mentoria"]} 
+                    image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800"
+                    onClick={() => {}} 
+                  />
+                  <ProjectCard 
+                    title="Soporte Técnico" 
+                    description="Soluciones de infraestructura y optimización de sistemas." 
+                    tags={["Soporte", "IT"]} 
+                    image="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500"
+                    onClick={() => {}} 
+                  />
+                </div>
+              </section>
+
+              <Contacto />
+            </>
+          ) : (
+            <VistaProyectosWeb onVolver={() => setVista('inicio')} />
+          )}
+
         </main>
 
         <footer className="py-12 border-t border-white/5 text-center text-gray-600 text-sm">
