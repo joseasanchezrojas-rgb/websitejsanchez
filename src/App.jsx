@@ -215,14 +215,17 @@ const VistaProyectosWeb = ({ onVolver }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {proyectosReales.map((p, i) => (
-          <div key={i} className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 p-4 hover:border-blue-500/30 transition-all">
+          <div key={i} className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 p-4 hover:border-blue-500/30 transition-all flex flex-col">
             <img src={p.image} className="rounded-xl mb-4 h-44 w-full object-cover opacity-90" alt={p.title} />
             <div className="flex gap-2 mb-3">
                {p.tags.map(tag => <span key={tag} className="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded font-bold uppercase">{tag}</span>)}
             </div>
-            <h4 className="text-xl font-bold text-white mb-2">{p.title}</h4>
-            <p className="text-gray-400 text-sm mb-6 leading-relaxed">{p.description}</p>
-            <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-400 font-bold text-sm hover:underline">
+            {/* Ajuste de tamaño de fuente para que quepa en una sola línea */}
+            <h4 className="text-lg md:text-xl font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis">
+              {p.title}
+            </h4>
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed flex-grow">{p.description}</p>
+            <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-400 font-bold text-sm hover:underline mt-auto">
               Visitar Demo <ExternalLink size={14} className="ml-1" />
             </a>
           </div>
