@@ -206,7 +206,7 @@ const Habilidades = () => {
     { name: "Redes / CCTV", icon: Globe, colorClass: "text-green-400" },
     { name: "Soporte IT", icon: Settings, colorClass: "text-orange-400" },
     { name: "Diseño Gráfico", icon: PenTool, colorClass: "text-pink-400" },
-    { name: "Diseño UI/UX", icon: LayoutTemplate, colorClass: "text-pink-500" }
+    { name: "Diseño UI/UX", icon: LayoutTemplate, colorClass: "text-pink-500" },
     
   ];
 
