@@ -49,7 +49,7 @@ const BotonCV = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
           >
-            Ver Curriculum
+            Ver Curriculum Vitae
           </a>
           <a 
             href={cvPath} 
