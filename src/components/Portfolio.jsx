@@ -12,7 +12,8 @@ const Portfolio = () => {
       tech: ["HTML", "CSS", "PHP", "MySQL", "JS"],
       icon: <Code size={20} />,
       description: "Sistema integral para la administración de historias clínicas y pacientes.",
-      details: "Desarrollado para optimizar el flujo de trabajo en consultorios médicos. Incluye módulos de registro, búsqueda avanzada de pacientes, control de citas y almacenamiento de diagnósticos bajo arquitectura MVC."
+      details: "Desarrollado para optimizar el flujo de trabajo en consultorios médicos. Incluye módulos de registro, búsqueda avanzada de pacientes, control de citas y almacenamiento de diagnósticos bajo arquitectura MVC.",
+      link: "https://sgmedica.infinityfreeapp.com/"
     },
     {
       id: 2,
@@ -152,13 +153,19 @@ const Portfolio = () => {
                 </div>
 
                 <div className="mt-12 flex flex-col sm:flex-row gap-6 border-t border-white/5 pt-8">
-                  <a href="#" className="flex-1 py-3 bg-white text-black font-mono text-xs font-bold rounded-full flex items-center justify-center gap-2 hover:bg-blue-600 hover:text-white transition-all uppercase italic">
-                    Demo en Vivo <ExternalLink size={14} />
-                  </a>
-                  <a href="#" className="flex-1 py-3 border border-white/10 text-gray-400 font-mono text-xs font-bold rounded-full flex items-center justify-center gap-2 hover:text-white transition-all uppercase italic">
-                    GitHub <Github size={14} />
-                  </a>
-                </div>
+  <a 
+    href={selectedProject.link || "#"} // Usa el link del proyecto o # si no tiene
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="flex-1 py-3 bg-white text-black font-mono text-xs font-bold rounded-full flex items-center justify-center gap-2 hover:bg-blue-600 hover:text-white transition-all uppercase italic"
+  >
+    Demo en Vivo <ExternalLink size={14} />
+  </a>
+  
+  <a href="#" className="flex-1 py-3 border border-white/10 text-gray-400 font-mono text-xs font-bold rounded-full flex items-center justify-center gap-2 hover:text-white transition-all uppercase italic">
+    GitHub <Github size={14} />
+  </a>
+</div>
               </div>
             </div>
           </div>
