@@ -102,7 +102,7 @@ const Portfolio = () => {
                 {/* LINKS DE ACCIÓN */}
                 <div className="flex gap-4">
                   <button className="font-mono text-xs font-bold text-white flex items-center gap-2 hover:text-blue-500 transition-colors uppercase italic">
-                    Ver Demo <ExternalLink size={14} />
+                    Ver Más<ExternalLink size={14} />
                   </button>
                   <button className="font-mono text-xs font-bold text-gray-500 flex items-center gap-2 hover:text-white transition-colors uppercase italic">
                     GitHub <Github size={14} />
