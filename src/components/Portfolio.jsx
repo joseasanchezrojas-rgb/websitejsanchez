@@ -22,7 +22,8 @@ const Portfolio = () => {
       tech: ["React", "Tailwind", "Lucide"],
       icon: <Monitor size={20} />,
       description: "Portafolio profesional optimizado con enfoque en marca personal.",
-      details: "Plataforma desarrollada con React para mostrar mi trayectoria como Ingeniero. Utiliza Tailwind CSS para un diseño responsivo y Roboto Mono para reforzar la identidad técnica."
+      details: "Plataforma desarrollada con React para mostrar mi trayectoria como Ingeniero. Utiliza Tailwind CSS para un diseño responsivo y Roboto Mono para reforzar la identidad técnica.",
+      link:"https://jasanchezr.vercel.app/"
     },
     {
       id: 3,

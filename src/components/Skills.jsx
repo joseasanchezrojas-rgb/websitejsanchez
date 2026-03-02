@@ -4,7 +4,29 @@ import {
   GraduationCap, Share2, Settings, PenTool, Layout 
 } from "lucide-react";
 
-const Skills = () => {
+const Skills = ({ idioma }) => {
+  // Diccionario de textos para la sección de Habilidades
+  const textos = {
+    ES: {
+      titulo: "/ Habilidades Técnicas",
+      subtitulo: "Tecnologías y herramientas que domino profesionalmente.",
+      redes: "Redes / CCTV",
+      soporte: "Soporte IT",
+      disenoG: "Diseño Gráfico",
+      disenoUI: "Diseño UI/UX"
+    },
+    EN: {
+      titulo: "/ Technical Skills",
+      subtitulo: "Technologies and tools I master professionally.",
+      redes: "Networking / CCTV",
+      soporte: "IT Support",
+      disenoG: "Graphic Design",
+      disenoUI: "UI/UX Design"
+    }
+  };
+
+  const t = textos[idioma] || textos.ES;
+
   const skills = [
     { name: "HTML", icon: <Code2 size={32} />, color: "text-orange-500" },
     { name: "CSS", icon: <Layout size={32} />, color: "text-blue-500" },
@@ -12,10 +34,10 @@ const Skills = () => {
     { name: "MySQL", icon: <Database size={32} />, color: "text-blue-600" },
     { name: "JavaScript", icon: <Code2 size={32} />, color: "text-yellow-500" },
     { name: "Moodle / LMS", icon: <GraduationCap size={32} />, color: "text-orange-400" },
-    { name: "Redes / CCTV", icon: <Globe size={32} />, color: "text-green-500" },
-    { name: "Soporte IT", icon: <Settings size={32} />, color: "text-gray-400" },
-    { name: "Diseño Gráfico", icon: <PenTool size={32} />, color: "text-pink-500" },
-    { name: "Diseño UI/UX", icon: <Share2 size={32} />, color: "text-purple-500" },
+    { name: t.redes, icon: <Globe size={32} />, color: "text-green-500" },
+    { name: t.soporte, icon: <Settings size={32} />, color: "text-gray-400" },
+    { name: t.disenoG, icon: <PenTool size={32} />, color: "text-pink-500" },
+    { name: t.disenoUI, icon: <Share2 size={32} />, color: "text-purple-500" },
   ];
 
   return (
@@ -25,10 +47,10 @@ const Skills = () => {
         {/* ENCABEZADO DE SECCIÓN */}
         <div className="mb-16">
           <h2 className="font-mono text-3xl md:text-4xl font-bold italic text-white border-l-4 border-blue-500 pl-6 mb-4">
-            / Habilidades Técnicas
+            {t.titulo}
           </h2>
           <p className="font-mono text-gray-500 italic text-sm md:text-base">
-            Tecnologías y herramientas que domino profesionalmente.
+            {t.subtitulo}
           </p>
         </div>
 
@@ -42,7 +64,7 @@ const Skills = () => {
               <div className={`${skill.color} group-hover:scale-110 transition-transform duration-300`}>
                 {skill.icon}
               </div>
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors text-center">
                 {skill.name}
               </span>
             </div>
