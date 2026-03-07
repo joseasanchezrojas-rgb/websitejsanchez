@@ -9,17 +9,19 @@ export default defineConfig({
   ],
   base: './',
   build: {
-    // Usamos esbuild (por defecto) para evitar errores de dependencias faltantes
-    minify: 'esbuild', 
-    rollupOptions: {
-      output: {
-        // Mantenemos la fragmentación para mejorar la latencia de 636ms
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        },
+  minify: 'esbuild',
+  rollupOptions: {
+    output: {
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          // Separamos las librerías grandes para que no bloqueen el renderizado inicial
+          return 'vendor';
+        }
       },
     },
-  }
+  },
+  // Elimina comentarios y asegura que el código no usado se descarte
+  target: 'esnext',
+  cssCodeSplit: true,
+}
 })
