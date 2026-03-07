@@ -41,7 +41,8 @@ const Portfolio = () => {
       tech: ["Figma", "Adobe AI", "UX Research"],
       icon: <Palette size={20} />,
       description: "Prototipado de alta fidelidad centrado en la experiencia de usuario.",
-      details: "Proceso de diseño que abarca desde el wireframing hasta el prototipo interactivo de mi sitio web, asegurando una navegación intuitiva y coherente con mi perfil profesional."
+      details: "Proceso de diseño que abarca desde el wireframing hasta el prototipo alta fidelidad de mi sitio web, asegurando una navegación intuitiva y coherente con mi perfil profesional.",
+      link: "https://www.figma.com/design/dL2zF5yAeFNpPlmBn3lmc3/Web-Site-Ing-Sanchez?node-id=0-1&t=GoQGmE2eZyIxEo1o-1"
     },
     {
       id: 5,
