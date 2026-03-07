@@ -86,8 +86,8 @@ const Hero = ({ idioma }) => {
         <div className="flex flex-col gap-8 text-gray-400 border-l border-white/10 pl-8 ml-4">
           <a href="https://www.instagram.com/ing.jsanchezr/" target="_blank" rel="noreferrer" aria-label="Visitar mi perfil de Instagram" className="hover:text-white hover:scale-110 transition-all"><Instagram size={24}/></a>
           <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noreferrer" aria-label="Ver mi portafolio de código en GitHub" className="hover:text-white hover:scale-110 transition-all"><Github size={24}/></a>
-          <a href="#" className="hover:text-blue-500 hover:scale-110 transition-all"><Linkedin size={24}/></a>
-          <a href="https://wa.me/584243019823" className="hover:text-green-500 hover:scale-110 transition-all"><MessageCircle size={24}/></a>
+          <a href="#" target="_blank" rel="noreferrer" aria-label="Visitar mi perfil en LinkedIn" className="hover:text-blue-500 hover:scale-110 transition-all"><Linkedin size={24}/></a>
+          <a href="https://wa.me/584243019823" target="_blank" rel="noreferrer" aria-label="Contáctame a mi WhatsApp" className="hover:text-green-500 hover:scale-110 transition-all"><MessageCircle size={24}/></a>
         </div>
       </div>
     </section>
