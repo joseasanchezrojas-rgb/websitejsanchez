@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 
+// 1. Carga Diferida de componentes pesados
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Services = lazy(() => import('./components/Services'));
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
 export default function App() {
-  // 1. Estado global del idioma
   const [idioma, setIdioma] = useState('ES');
 
-  // 2. Función para alternar idioma que pasaremos al Navbar
   const toggleLanguage = () => {
     setIdioma(prev => (prev === 'ES' ? 'EN' : 'ES'));
   };
@@ -21,20 +21,23 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white font-mono selection:bg-blue-500/30">
       <div className="bg-dots">
-        {/* Pasamos el estado y la función al Navbar */}
         <Navbar idioma={idioma} toggleLanguage={toggleLanguage} />
         
         <main className="max-w-7xl mx-auto px-6 pt-24">
-          {/* Pasamos la prop 'idioma' a cada componente para que sepan qué texto mostrar */}
+          {/* El Hero es crítico, se mantiene con carga normal para un FCP rápido */}
           <Hero idioma={idioma} />
-          <About idioma={idioma} />
-          <Skills idioma={idioma} />
-          <Services idioma={idioma} />
-          <Portfolio idioma={idioma} />
-          <Contact idioma={idioma} />
+
+          {/* 2. Suspense maneja el estado de carga de los componentes diferidos */}
+          <Suspense fallback={<div className="h-40 flex items-center justify-center text-gray-500 italic">Cargando módulos...</div>}>
+            <About idioma={idioma} />
+            <Skills idioma={idioma} />
+            <Services idioma={idioma} />
+            <Portfolio idioma={idioma} />
+            <Contact idioma={idioma} />
+            <Footer idioma={idioma} />
+          </Suspense>
         </main>
 
-        <Footer idioma={idioma} />
         <WhatsAppButton idioma={idioma} />
       </div>
     </div>
