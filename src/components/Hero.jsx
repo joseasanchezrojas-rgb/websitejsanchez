@@ -33,10 +33,17 @@ const Hero = ({ idioma }) => {
           
           <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-blue-500 to-transparent">
             <img 
-              src={fotoPerfil} 
-              alt="José Sánchez" 
-              className="w-full h-full rounded-full object-cover object-center border-4 border-black"
-            />
+  src={fotoPerfil} 
+  alt="José Sánchez" 
+  // 1. Prioridad máxima para el navegador
+  fetchpriority="high" 
+  // 2. Carga inmediata (nunca lazy en el Hero)
+  loading="eager"
+  // 3. Dimensiones para evitar saltos de diseño (CLS)
+  width="320" 
+  height="320"
+  className="w-full h-full rounded-full object-cover object-center border-4 border-black"
+/>
           </div>
 
           <div className="absolute bottom-6 right-6 w-8 h-8 bg-green-500 border-4 border-black rounded-full z-20 shadow-[0_0_15px_rgba(34,197,94,0.5)]"></div>
