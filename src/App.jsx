@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhatsAppButton from './components/WhatsAppButton';
 
-// 1. Carga Diferida de componentes pesados
+// 1. Verificación estricta de rutas (Case Sensitive)
 const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
 const Services = lazy(() => import('./components/Services'));
@@ -24,11 +24,10 @@ export default function App() {
         <Navbar idioma={idioma} toggleLanguage={toggleLanguage} />
         
         <main className="max-w-7xl mx-auto px-6 pt-24">
-          {/* El Hero es crítico, se mantiene con carga normal para un FCP rápido */}
           <Hero idioma={idioma} />
 
-          {/* 2. Suspense maneja el estado de carga de los componentes diferidos */}
-          <Suspense fallback={<div className="h-40 flex items-center justify-center text-gray-500 italic">Cargando módulos...</div>}>
+          {/* 2. Suspense con fallback minimalista para evitar bloqueos */}
+          <Suspense fallback={<div className="h-screen bg-black" />}>
             <About idioma={idioma} />
             <Skills idioma={idioma} />
             <Services idioma={idioma} />
