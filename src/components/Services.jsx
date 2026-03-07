@@ -124,7 +124,7 @@ const Services = ({ idioma }) => {
           <h2 className="font-mono text-3xl md:text-4xl font-bold italic text-white border-l-4 border-blue-500 pl-6 mb-4">
             {t.titulo}
           </h2>
-          <p className="font-mono text-gray-500 italic text-sm md:text-base">
+          <p className="font-mono text-gray-400 italic text-sm md:text-base">
             {t.subtitulo}
           </p>
         </div>

@@ -43,7 +43,7 @@ const Footer = ({ idioma }) => {
             <p className="font-mono text-sm text-gray-400 leading-relaxed italic">
               {t.frase}
             </p>
-            <div className="flex items-center gap-4 text-gray-500">
+            <div className="flex items-center gap-4 text-gray-400">
               <a href="https://www.instagram.com/ing.jsanchezr/" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1"><Instagram size={20} /></a>
               <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1"><Github size={20} /></a>
               <a href="#" className="hover:text-blue-500 transition-all hover:-translate-y-1"><Linkedin size={20} /></a>
@@ -61,7 +61,7 @@ const Footer = ({ idioma }) => {
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, '')}`} 
-                    className="font-mono text-sm text-gray-500 hover:text-blue-400 transition-colors flex items-center group italic"
+                    className="font-mono text-sm text-gray-400 hover:text-blue-400 transition-colors flex items-center group italic"
                   >
                     <ChevronRight size={14} className="mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-all" />
                     {item}
@@ -80,14 +80,14 @@ const Footer = ({ idioma }) => {
               <div className="flex items-start gap-3 group">
                 <Mail size={18} className="text-blue-500 mt-1" />
                 <div>
-                  <p className="font-mono text-xs text-gray-600 uppercase font-bold">Email</p>
+                  <p className="font-mono text-xs text-gray-400 uppercase font-bold">Email</p>
                   <a href="mailto:joseasanchezrojas@gmail.com" className="font-mono text-sm text-gray-400 hover:text-white transition-colors">joseasanchezrojas@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-1" />
                 <div>
-                  <p className="font-mono text-xs text-gray-600 uppercase font-bold">{t.ubicacion}</p>
+                  <p className="font-mono text-xs text-gray-400 uppercase font-bold">{t.ubicacion}</p>
                   <p className="font-mono text-sm text-gray-400 italic">Aragua, Venezuela</p>
                 </div>
               </div>
@@ -98,10 +98,10 @@ const Footer = ({ idioma }) => {
 
         {/* LÍNEA FINAL DE COPYRIGHT */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-[10px] text-gray-600 uppercase tracking-widest italic">
+          <p className="font-mono text-[10px] text-gray-400 uppercase tracking-widest italic">
             © {currentYear} SanchezIng • {t.derechos}
           </p>
-          <div className="font-mono text-[10px] text-gray-700 uppercase tracking-widest italic text-center md:text-right">
+          <div className="font-mono text-[10px] text-gray-400 uppercase tracking-widest italic text-center md:text-right">
             {t.roles}
           </div>
         </div>

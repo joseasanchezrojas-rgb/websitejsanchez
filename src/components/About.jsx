@@ -55,7 +55,7 @@ const About = ({ idioma }) => {
               <p className="font-mono text-lg text-gray-300 leading-relaxed italic">
                 {t.p1}
               </p>
-              <p className="font-mono text-gray-400 leading-relaxed italic">
+              <p className="font-mono text-gray-300 leading-relaxed italic">
                 {t.p2_1}<span className="text-blue-400 font-medium italic">{t.p2_2}</span>{t.p2_3}<span className="text-blue-400 font-medium italic">{t.p2_4}</span>{t.p2_5}
               </p>
             </div>
@@ -83,7 +83,7 @@ const About = ({ idioma }) => {
               </a>
             </div>
 
-            <p className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.3em] mt-8 italic">
+            <p className="font-mono text-[10px] text-gray-400 uppercase tracking-[0.3em] mt-8 italic">
               {t.footerCV} • {new Date().getFullYear()}
             </p>
           </div>
@@ -97,7 +97,7 @@ const About = ({ idioma }) => {
               <div className="border-2 border-gray-700 rounded-full p-4 group-hover:border-blue-500 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all">
                 <MousePointer2 size={32} className="rotate-180" />
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center text-gray-400">
                 <span className="font-mono text-xs font-bold tracking-[0.4em] uppercase">
                   {t.scrollPortafolio}
                 </span>
