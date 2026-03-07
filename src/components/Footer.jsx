@@ -44,11 +44,46 @@ const Footer = ({ idioma }) => {
               {t.frase}
             </p>
             <div className="flex items-center gap-4 text-gray-400">
-              <a href="https://www.instagram.com/ing.jsanchezr/" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1"><Instagram size={20} /></a>
-              <a href="https://github.com/joseasanchezrojas-rgb" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1"><Github size={20} /></a>
-              <a href="#" className="hover:text-blue-500 transition-all hover:-translate-y-1"><Linkedin size={20} /></a>
-              <a href="https://wa.me/584243019823" target="_blank" rel="noreferrer" className="hover:text-green-500 transition-all hover:-translate-y-1"><MessageCircle size={20} /></a>
-            </div>
+  <a 
+    href="https://www.instagram.com/ing.jsanchezr/" 
+    target="_blank" 
+    rel="noreferrer" 
+    aria-label="Instagram de SanchezIng" // Solución para PageSpeed
+    className="hover:text-white transition-all hover:-translate-y-1"
+  >
+    <Instagram size={20} />
+  </a>
+
+  <a 
+    href="https://github.com/joseasanchezrojas-rgb" 
+    target="_blank" 
+    rel="noreferrer" 
+    aria-label="GitHub de José Sánchez" // Solución para PageSpeed
+    className="hover:text-white transition-all hover:-translate-y-1"
+  >
+    <Github size={20} />
+  </a>
+
+  <a 
+    href="#" 
+    target="_blank" 
+    rel="noreferrer"
+    aria-label="LinkedIn Profesional" // Solución para PageSpeed
+    className="hover:text-blue-500 transition-all hover:-translate-y-1"
+  >
+    <Linkedin size={20} />
+  </a>
+
+  <a 
+    href="https://wa.me/584243019823" 
+    target="_blank" 
+    rel="noreferrer" 
+    aria-label="Contacto vía WhatsApp" // Solución para PageSpeed
+    className="hover:text-green-500 transition-all hover:-translate-y-1"
+  >
+    <MessageCircle size={20} />
+  </a>
+</div>
           </div>
 
           {/* COLUMNA 2: NAVEGACIÓN RÁPIDA */}
